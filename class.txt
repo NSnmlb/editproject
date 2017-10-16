@@ -1,6 +1,6 @@
 for (i=0;i<k;i++)
 		    {
-		    	
+		//qiugai    	
 		       if (word1.equals(word_list[i]))
 		    	{
 		    	   
