@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="css/my.css">
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+
+<div id="slider" class="slider">
+</div>
+
+<div class="ub ub-f1 ub-ver umar-t">
+    <!--九宫格-->
+    <div class="ub ub-f1 uinn-1">
+        <div class="ub ub-ver ub-f1 ub-ac ub-pc"id="tuijian">
+            <div class="ub ub-f1 ub-pc ub-ac ub-ver uc-a-1 icon-1"style="background: #ffa54b">
+                <div class="ub-img ub tuijian"></div>                          
+            </div>
+            <div class="ulev-3 umar-t1">推荐</div> 
+        </div>
+        <div class="ub ub-ver ub-f1 ub-ac ub-pc"id="xunwen">
+            <div class="ub ub-f1 ub-pc ub-ac ub-ver uc-a-1 icon-1"style="background: #ffa54b">
+                <div class="ub-img ub xunwen"></div>                          
+            </div>
+            <div class="ulev-3 umar-t1">添加问题</div> 
+        </div>
+        <div class="ub ub-ver ub-f1 ub-ac ub-pc"id="sousuo">
+            <div class="ub ub-f1 ub-pc ub-ac ub-ver uc-a-1 icon-1"style="background: #ffa54b">
+                <div class="ub-img ub dati"></div>                          
+            </div>
+            <div class="ulev-3 umar-t1">搜索问题</div> 
+        </div>
+    </div> 
+    <div class="uba bc-border uinput ub ub-f1">
+    <textarea placeholder="hello,appcan" type="text" class="ub-f1">
+        欢迎来到问答系统，在本系统中，你将可以进行问题推荐，问题查询和问题添加功能。
+    </textarea>
+</div>
+
+ </div>
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+   <script src="js/appcan.slider.js"></script>
+ </body>
+    <script>
+        appcan.ready(function() {                      
+        });
+  var slider = appcan.slider({
+  selector : '#slider',
+  aspectRatio:6/16,
+  hasLabel:false,
+  index:0
+});
+slider.set([
+    {
+    img : "css/images/4.jpg",
+    label:""
+}, {
+    img : "css/images/timg.jpg",
+    label:""
+}])
+slider.on("clickItem",function(index,data){ 
+})  
+    appcan.button("#sousuo","ani-act",function  ( ) {
+            appcan.window.open("Try","Try.html");
+          
+    }) 
+    appcan.button("#xunwen","ani-act",function  ( ) {
+            appcan.window.open("xunwen","xunwen.html");
+          
+    })
+    appcan.button("#tuijian","ani-act",function  ( ) {
+            appcan.window.open("tuijian","tuijian.html");
+          
+    })
+    
+ </script>
+</html>
+

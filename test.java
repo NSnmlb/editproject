@@ -1,5 +1,5 @@
 package สตั้าป;
-
+-XX:+PerfBypassFileSystemCheck
 import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="login_content/css/main.css">
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+        <div class="ub ub-ver ub-f1">
+            <form method="get" action="http://localhost:8080/MyLab2/login.jsp">
+                <div class="uba b-gra umar-a uc-a1 c-wh">
+                    <div class="ub ub-ac">
+                        <div class="umhw resuser ub-img umar-l"></div>
+                        <div class="ub-f1 uinput uinn">
+                            <input placeholder="手机/用户名" id="uid" name="username"  type="text" class="uc-a1">
+                        </div>
+                    </div>
+                </div>
+                <div class="uba b-gra umar-a uc-a1 c-wh">
+                    <div class="ub ub-ac">
+                        <div class="umhw respwd ub-img umar-l"></div>
+                        <div class="ub-f1 uinput uinn">
+                            <input placeholder="密码" id="upwd" name="password"  type="password" class="uc-a1">
+                        </div>
+                    </div>
+                </div>
+                <div class="uin uinn">
+                    <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="submit">
+                        登　录
+                    </div>
+                </div>
+        </div>
+        <button type="submit"class="uinvisible"></button>
+        </form>
+        </div>
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+    </body>
+    <script>
+        appcan.ready(function() {
+        });
+        function login() {
+            var name = $("#uid").val();
+            var pwd = $("#upwd").val();
+            if (name == "") {
+                appcan.window.openToast('账号不能为空', '2000');
+                return;
+            } else if (pwd == "") {
+                appcan.window.openToast('密码不能为空', '2000');
+                return;
+            } else {
+                $("form").submit();
+            }
+        }
+
+        appcan.button("#submit", "ani-act", function() {
+            login();
+        })
+        $("form").on('submit', function() {
+            var name = $("#uid").val();
+            var pwd = $("#upwd").val();
+            appcan.ajax({
+                url : 'http://localhost:8080/MyLab2/login.jsp',
+                type : 'GET',
+                data : {
+                    username : name,
+                    password : pwd
+                },
+                success : function(data) {                   
+                    if (data == "1") {//登陆成功
+                        appcan.window.openToast('登陆成功', '2000');                       
+                        var timer = setTimeout(function() {
+                            appcan.openWinWithUrl('index', 'index.html');
+                            //页面跳转
+                        }, 2000);
+                    }else {
+                        appcan.window.openToast('错误！', '2000');
+                    }
+                }
+            });
+            return false;
+        });
+    </script>
+</html>

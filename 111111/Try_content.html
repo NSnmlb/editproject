@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+        <div class="ub ub-f1 ub-ver umar-t">              
+           <form method="get" action="">
+              <div class="umar-a uba bc-border">
+                  <div class="ub ub-ac ubb umh5 bc-border ">
+                      <div class=" uinput ub ub-f1">
+                          <div class="uinn fa fa-user sc-text"></div>
+                          <input placeholder="请输入搜索问题" type="text" class="ub-f1" id="phone1">
+                      </div>
+                  </div>
+              </div>
+              <div class="uinn">
+                  <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="submit">
+                      <div class="uinn3 fa fa-shield umh1 umw1" id="submit"></div>
+                      确认
+                  </div>
+              </div>
+              <button type="submit"class="uinvisible"></button>
+            </form> 
+            <div class="ub ub-ver">
+                <div id="listview"class ="sc-bg">                                                 
+                </div>             
+            </div>  
+            <form method="get" action="">
+              <div class="umar-a uba bc-border">
+                  <div class="ub ub-ac ubb umh5 bc-border ">
+                      <div class=" uinput ub ub-f1">
+                          <div class="uinn fa fa-user sc-text"></div>
+                          <input placeholder="请输入1-5对答案进行评价" type="text" class="ub-f1" id="pingjia_wenti">
+                      </div>
+                  </div>
+              </div>
+              <div class="uinn">
+                  <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="submit1">
+                      <div class="uinn3 fa fa-shield umh1 umw1" id="submit1"></div>
+                      确认
+                  </div>
+              </div>
+              <button type="submit"class="uinvisible"><tton>
+            </form> 
+
+            
+
+            
+                        
+        </div>
+    </body>
+    <script src="js/appcan.js"></script>
+    <script src="js/appcan.control.js"></script>
+    </body>
+    <script>
+        appcan.ready(function() {
+        });
+        function pingjia() {
+            var ping = $("#pingjia_wenti").val();           
+            if (ping == "") {
+                appcan.window.openToast('评价不能为空', '2000');
+                return;
+            } else {
+                $("form").submit();
+            }
+        }
+
+        appcan.button("#submit1", "ani-act", function() {
+            pingjia();
+        })
+        $("form").on('submit1', function() {
+            
+            var ping = $("#pingjia_wenti").val();   
+            appcan.ajax({
+                url : 'http://localhost:8080/MyLab2/searchanswer.jsp',              
+                type : 'GET',
+                data : {
+                    question : name,
+                    question1:'a',
+                    question2:'b'                 
+                },
+                success : function(question) {                  
+                    if (question != "1") {
+                        appcan.window.openToast('评价成功！', '2000');                      
+                    }else {
+                        appcan.window.openToast('错误！', '2000');
+                    }
+                }
+            });
+            return false;
+        });
+
+      
+      
+        function login() {
+            var name = $("#phone1").val();           
+            if (name == "") {
+                appcan.window.openToast('搜索不能为空', '2000');
+                return;
+            } else {
+                $("form").submit();
+            }
+        }
+
+        appcan.button("#submit", "ani-act", function() {
+            login();
+        })
+        $("form").on('submit', function() {
+            
+            var name = $("#phone1").val();   
+            appcan.ajax({
+                url : 'http://localhost:8080/MyLab2/searchanswer.jsp',              
+                type : 'GET',
+                data : {
+                    question : name,
+                    question1:'a',
+                    question2:'b'
+                                  
+                },
+                success : function(question) {                   
+                    if (question != "1") {
+                        $('#listview').append(question); 
+                        $('#listview').append(question1);
+                        $('#listview').append(question2);     
+                                          
+                        
+                                                       
+                    }else {                     
+                        appcan.window.openToast('错误！', '2000'); 
+                        
+                    }
+                }
+            });
+            return false;
+        });
+         
+    </script>
+</html>

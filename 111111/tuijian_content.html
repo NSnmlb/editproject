@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+        <div class="ub ub-f1 ub-ver umar-t">
+            
+            <form method="get" action="">             
+              <div class="uinn">
+                  <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="submit">
+                      <div class="uinn3 fa fa-shield umh1 umw1" id="submit"></div>
+                      确认
+                  </div>
+              </div>
+              <button type="submit"class="uinvisible"></button>
+            </form> 
+                                                                                           
+            <div class="ub ub-ver">
+                <div id="listview"class ="sc-bg">                                                 
+                </div>             
+            </div>
+                                                                         
+        </div>    
+    </body>
+    <script src="js/appcan.js"></script>
+    <script src="js/appcan.control.js"></script>
+    </body>
+    <script>
+        appcan.ready(function() {
+        });
+        
+       function tuijian() {           
+          $("form").submit();           
+        }
+
+        appcan.button("#submit", "ani-act", function() {
+            tuijian();
+        })
+        $("form").on('submit', function() {  
+            var a="q1";                                     
+            appcan.ajax({
+                url : 'http://localhost:8080/MyLab2/suggest.jsp',              
+                type : 'GET',
+                data : {
+                    question1 : 'a',
+                    answer1: 'a',
+                                                                     
+                },
+                
+                success : function(question1) {  
+                    
+                    $('#listview').append(question1);                                 
+                    $('#listview').append(answer1);                  
+             
+                                    
+                    
+                       
+                            
+                }
+            });
+            return false;
+        });
+
+    </script>
+</html>
